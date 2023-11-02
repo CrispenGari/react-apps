@@ -1,0 +1,26 @@
+.loading {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading__loader {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid white;
+  border-top-color: cornflowerblue;
+  animation: loading 1s ease 0s infinite;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
