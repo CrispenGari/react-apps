@@ -1,17 +1,20 @@
 import React from "react";
 import "./Form.css";
 import { BASE_URL } from "../../constants";
-const Form = () => {
+const Form = ({ setNews, setLoading }) => {
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const search = async (e) => {
     e.preventDefault();
     if (searchTerm.trim().length < 3) return;
+    setNews([]);
+    setLoading(true);
     const res = await fetch(
       `${BASE_URL}everything?q=${searchTerm}&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
     );
     const data = await res.json();
-    console.log({ data });
+    setNews(data.articles);
+    setLoading(false);
   };
   return (
     <form className="form" onSubmit={search}>
