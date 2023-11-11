@@ -25,7 +25,7 @@ const App = () => {
         {loading ? (
           <p>Loading news...</p>
         ) : (
-          news.map((item, index) => <News key={index} news={item} />)
+          news?.map((item, index) => <News key={index} news={item} />)
         )}
       </div>
     </div>
