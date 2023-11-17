@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--secondary);
+  padding: 10px 20px;
+}
+.header__left > img {
+  width: 50px;
+  -webkit-user-drag: none;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+  color: white;
+  user-select: none;
+  cursor: pointer;
+}
+
+.header__right--icon {
+  font-size: 30px;
+}
+.header__right > p {
+  margin-left: 10px;
+  font-weight: 700;
+}
