@@ -1,0 +1,51 @@
+.recipe {
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 5px;
+  user-select: none;
+  cursor: pointer;
+}
+.recipe:hover {
+  animation: zoom 1s ease 0s;
+}
+.recipe > h1 {
+  font-size: 1.1rem;
+}
+.recipe > p {
+  color: gray;
+  font-size: 0.8rem;
+  margin: 5px 0;
+}
+.recipe > img {
+  height: 100px;
+  object-fit: contain;
+}
+
+.recipe__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recipe__controls__like__button {
+  font-size: 2rem;
+  color: var(--main);
+  cursor: pointer;
+  transition: all 1s;
+}
+.recipe__controls__like__button:hover {
+  color: var(--tertiary);
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.03);
+  }
+}
