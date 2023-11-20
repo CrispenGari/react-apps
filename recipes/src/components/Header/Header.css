@@ -10,6 +10,7 @@
 .header__left > img {
   width: 50px;
   -webkit-user-drag: none;
+  cursor: pointer;
 }
 .header__right {
   display: flex;
@@ -21,8 +22,37 @@
 
 .header__right--icon {
   font-size: 30px;
+  transition: all 1s;
 }
-.header__right > p {
-  margin-left: 10px;
-  font-weight: 700;
+.header__right__button {
+  position: relative;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.header__right__button > p {
+  top: -5px;
+  position: absolute;
+  right: -5px;
+  z-index: 1;
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  transition: all 500ms;
+}
+
+.header__right__button:hover .header__right--icon {
+  color: var(--main);
+}
+
+.header__right__button:hover p {
+  background-color: white;
+  color: black;
 }

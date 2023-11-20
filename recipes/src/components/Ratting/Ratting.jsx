@@ -10,7 +10,7 @@ const Ratting = ({ ratting }) => {
       {Array(ratting)
         .fill(true)
         .map((_, index) => (
-          <IoStarSharp className="ratting__star" />
+          <IoStarSharp key={index} className="ratting__star" />
         ))}
       {Array(left)
         .fill(true)

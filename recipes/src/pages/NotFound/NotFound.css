@@ -1,0 +1,46 @@
+.not__found {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  user-select: none;
+}
+.not__found > img {
+  width: 50px;
+  -webkit-user-drag: none;
+}
+.not__found > h1 {
+  color: white;
+  margin-top: 30px;
+}
+
+.not__found > h1 > span:nth-of-type(2) {
+  position: relative;
+  color: black;
+  animation: bounce 1s ease 0s infinite;
+}
+
+.not__found::-webkit-scrollbar {
+  display: none;
+}
+
+.not__found > p {
+  font-size: 0.8rem;
+}
+
+.not__found a {
+  text-decoration: none !important;
+}
+
+@keyframes bounce {
+  from {
+    top: -30px;
+  }
+  to {
+    top: 0;
+  }
+}

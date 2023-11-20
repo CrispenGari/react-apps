@@ -2,8 +2,27 @@ import React from "react";
 import "./Recipe.css";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import Ratting from "../Ratting/Ratting";
+import { useGlobalState } from "../../Context";
+import { ACTION_TYPES } from "../../reducers";
 const Recipe = ({ recipe }) => {
+  const [{ favorites }, dispatch] = useGlobalState();
   const [liked, setLiked] = React.useState(false);
+  const like = () => {
+    dispatch({
+      type: ACTION_TYPES.LIKE,
+      value: recipe,
+    });
+  };
+  const unlike = () => {
+    dispatch({
+      type: ACTION_TYPES.UNLIKE,
+      value: recipe?.id,
+    });
+  };
+
+  React.useEffect(() => {
+    setLiked(!!favorites.find((r) => r.id === recipe.id));
+  }, [favorites, recipe]);
 
   return (
     <div className="recipe">
@@ -19,12 +38,12 @@ const Recipe = ({ recipe }) => {
         <Ratting ratting={recipe.rattings} />
         {liked ? (
           <MdFavorite
-            onClick={() => setLiked(false)}
+            onClick={unlike}
             className="recipe__controls__like__button"
           />
         ) : (
           <MdFavoriteBorder
-            onClick={() => setLiked(true)}
+            onClick={like}
             className="recipe__controls__like__button"
           />
         )}

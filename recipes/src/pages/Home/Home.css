@@ -1,0 +1,19 @@
+.home {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.home::-webkit-scrollbar {
+  display: none;
+}
+.home__recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 100px;
+  max-width: 1200px;
+  margin: 0px auto;
+  margin-top: 20px;
+}
