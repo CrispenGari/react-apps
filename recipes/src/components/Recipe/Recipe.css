@@ -13,15 +13,15 @@
 .recipe:hover {
   animation: zoom 1s ease 0s;
 }
-.recipe > h1 {
+.recipe > div > h1 {
   font-size: 1.1rem;
 }
-.recipe > p {
+.recipe > div > p {
   color: gray;
   font-size: 0.8rem;
   margin: 5px 0;
 }
-.recipe > img {
+.recipe > div > img {
   height: 100px;
   object-fit: contain;
 }

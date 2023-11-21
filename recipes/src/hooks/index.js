@@ -1,12 +1,14 @@
-import React from "react";
-import { axios } from "../axios";
+import { recipes } from "../data/recipes";
 
 export const useRecipes = () => {
-  const [data, setData] = React.useState([]);
-  React.useEffect(() => {
-    axios.get("/recipes").then((res) => setData(res.data));
-  }, []);
   return {
-    recipes: data,
+    recipes,
+  };
+};
+
+export const useRecipe = ({ id }) => {
+  const recipe = recipes.find((r) => r.id === id);
+  return {
+    recipe,
   };
 };

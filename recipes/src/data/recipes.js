@@ -1,5 +1,5 @@
-{
-  "recipes": [
+export const 
+  recipes= [
     {
       "id": "7bac6ec3-fb66-4543-80f5-4b692de7a811",
       "url": "https://www.bbcgoodfood.com/recipes/smoked-salmon-quinoa-dill-lunch-pot",
@@ -43296,4 +43296,3 @@
       "maincategory": "recipes"
     }
   ]
-}
