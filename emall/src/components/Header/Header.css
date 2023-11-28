@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  background-color: white;
+  padding: 10px 20px;
+}
+
+.header__left > img {
+  width: 40px;
+  cursor: pointer;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+}
+.header__right__avatar {
+  width: 30px !important;
+  height: 30px !important;
+  cursor: pointer !important;
+  margin-left: 10px;
+}
