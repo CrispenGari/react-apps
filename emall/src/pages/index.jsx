@@ -7,6 +7,8 @@ import Register from "./auth/Register/Register";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { useUserStore } from "../store";
+import Cart from "./app/Cart/Cart";
+import Profile from "./app/Profile/Profile";
 
 const Root = () => {
   const navigate = useNavigate();
@@ -32,6 +34,8 @@ const Root = () => {
   return user ? (
     <Routes>
       <Route path="/" caseSensitive element={<Home />} />
+      <Route path="/cart" caseSensitive element={<Cart />} />
+      <Route path="/profile" caseSensitive element={<Profile />} />
       <Route path="*" element={<NotFound />} caseSensitive />
     </Routes>
   ) : (

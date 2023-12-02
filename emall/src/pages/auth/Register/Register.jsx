@@ -5,7 +5,11 @@ import { FcGoogle } from "react-icons/fc";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleAuthProvider } from "../../../firebase";
+import {
+  auth,
+  githubAuthProvider,
+  googleAuthProvider,
+} from "../../../firebase";
 const Register = () => {
   const [state, setState] = React.useState({
     error: "",
@@ -34,6 +38,23 @@ const Register = () => {
     signInWithPopup(auth, googleAuthProvider)
       .then((user) => {
         setState((state) => ({ ...state, email: "", password: "", error: "" }));
+        console.log(user.user);
+      })
+      .catch((error) => {
+        setState((state) => ({ ...state, password: "" }));
+        setState((state) => ({ ...state, error: error.message }));
+      });
+  };
+
+  const github = () => {
+    signInWithPopup(auth, githubAuthProvider)
+      .then((user) => {
+        setState((state) => ({
+          ...state,
+          email: "",
+          password: "",
+          error: "",
+        }));
         console.log(user.user);
       })
       .catch((error) => {
@@ -80,7 +101,11 @@ const Register = () => {
           >
             <FcGoogle />
           </IconButton>
-          <IconButton className="register__providers__btn" aria-label="github">
+          <IconButton
+            onClick={github}
+            className="register__providers__btn"
+            aria-label="github"
+          >
             <GitHub style={{ color: "#24282E" }} />
           </IconButton>
           <IconButton

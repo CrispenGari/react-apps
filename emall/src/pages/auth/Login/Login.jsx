@@ -5,7 +5,11 @@ import { FcGoogle } from "react-icons/fc";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleAuthProvider } from "../../../firebase";
+import {
+  auth,
+  githubAuthProvider,
+  googleAuthProvider,
+} from "../../../firebase";
 const Login = () => {
   const [state, setState] = React.useState({
     error: "",
@@ -32,6 +36,22 @@ const Login = () => {
 
   const google = () => {
     signInWithPopup(auth, googleAuthProvider)
+      .then((user) => {
+        setState((state) => ({
+          ...state,
+          email: "",
+          password: "",
+          error: "",
+        }));
+        console.log(user.user);
+      })
+      .catch((error) => {
+        setState((state) => ({ ...state, password: "" }));
+        setState((state) => ({ ...state, error: error.message }));
+      });
+  };
+  const github = () => {
+    signInWithPopup(auth, githubAuthProvider)
       .then((user) => {
         setState((state) => ({
           ...state,
@@ -85,7 +105,11 @@ const Login = () => {
           >
             <FcGoogle />
           </IconButton>
-          <IconButton className="login__providers__btn" aria-label="github">
+          <IconButton
+            onClick={github}
+            className="login__providers__btn"
+            aria-label="github"
+          >
             <GitHub style={{ color: "#24282E" }} />
           </IconButton>
           <IconButton className="login__providers__btn" aria-label="facebook">
