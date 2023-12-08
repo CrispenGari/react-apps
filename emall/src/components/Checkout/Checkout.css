@@ -1,0 +1,36 @@
+.checkout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  margin: 5px auto;
+  padding: 10px;
+  border-radius: 10px;
+  user-select: none;
+}
+
+.checkout__prices > p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.checkout__prices > p {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.checkout__controls {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+}
+.checkout__prices__actual,
+.checkout__prices__discount {
+  text-decoration: line-through red;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.checkout__prices__discount {
+  text-decoration: none;
+}
