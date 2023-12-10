@@ -39,6 +39,7 @@ const Form = ({ setShowForm }) => {
       discount: Number.parseFloat(discount),
       user: JSON.parse(JSON.stringify(user)),
       createdAt: new Date(),
+      sellerEmail: user?.email,
     })
       .then(() => {
         setState({ name: "", error: "", price: 0, discount: 0, image: "" });

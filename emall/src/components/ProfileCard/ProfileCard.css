@@ -1,0 +1,25 @@
+.profile__card {
+  width: 100%;
+  padding: 10px;
+  background-color: cornflowerblue;
+  max-width: 600px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 200px;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.profile__card__avatar {
+  width: 100px !important;
+  height: 100px !important;
+  position: absolute !important;
+  bottom: -50px !important;
+  left: 20px;
+}
+.profile__card > h1 {
+  color: white;
+}

@@ -1,16 +1,35 @@
 import React from "react";
 import "./Product.css";
 import { Avatar, Badge, IconButton } from "@mui/material";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { MdDelete, MdOutlineAddShoppingCart } from "react-icons/md";
 import { BsFillCartDashFill } from "react-icons/bs";
 import { useCartStore, useUserStore } from "../../store";
 import CountUp from "react-countup";
+import {
+  collection,
+  deleteDoc,
+  documentId,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import { db } from "../../firebase";
 
-const Product = ({ product, quantity }) => {
+const Product = ({ product, quantity, withDelete }) => {
   const { addProduct, removeProduct } = useCartStore();
   const { user } = useUserStore();
   const addToCart = () => {
     addProduct(product);
+  };
+
+  const deleteProduct = () => {
+    const q = query(
+      collection(db, "products"),
+      where(documentId(), "==", product.id)
+    );
+    getDocs(q).then((res) =>
+      res.docs.forEach(async (doc) => await deleteDoc(doc.ref))
+    );
   };
 
   const reduceQnty = () => {
@@ -106,9 +125,15 @@ const Product = ({ product, quantity }) => {
       </div>
 
       <div className="product__controls">
-        <IconButton onClick={addToCart}>
-          <MdOutlineAddShoppingCart />
-        </IconButton>
+        {withDelete ? (
+          <IconButton onClick={deleteProduct}>
+            <MdDelete />
+          </IconButton>
+        ) : (
+          <IconButton onClick={addToCart}>
+            <MdOutlineAddShoppingCart />
+          </IconButton>
+        )}
       </div>
     </div>
   );
