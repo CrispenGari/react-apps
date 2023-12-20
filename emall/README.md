@@ -9,3 +9,7 @@
 authentication with: google, github, facebook, email and password
 storage: store images of post
 ```
+
+#### Hosted
+
+Firebase: https://emall-dbae3.web.app
