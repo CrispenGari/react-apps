@@ -68,4 +68,6 @@ firebase init
 
 #### Hosted
 
-Firebase: https://emall-dbae3.web.app
+Firebase: https://emall-dbae3.web.app/
+
+Netlify: https://main--fascinating-peony-4ee40b.netlify.app/login
