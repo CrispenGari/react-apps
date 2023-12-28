@@ -1,21 +1,45 @@
 import React from "react";
-import { useData, useDebounce } from "./hooks";
+import { useQuery } from "react-query";
 
 const App = () => {
-  const data = useData({ id: 2, category: "users" });
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const deboundeTerm = useDebounce(searchTerm, 2000);
+  const [id, setId] = React.useState("1");
   return (
     <div>
-      <p>You typed: {deboundeTerm}</p>
       <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        type="number"
+        min={1}
+        max={200}
+        value={id}
+        defaultValue={1}
+        placeholder="Enter Todo Id"
+        onChange={(e) => setId(e.target.value)}
       />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <Todo id={id} />
     </div>
   );
 };
 
 export default App;
+
+const Todo = ({ id }) => {
+  const { data, isFetching, error, isLoading } = useQuery({
+    queryKey: ["todo", id],
+    queryFn: async (val) => {
+      const [, _id] = val.queryKey;
+      const res = await fetch(
+        `https://jsonplaceholder.typicode.com/todos/${_id}`
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+  return (
+    <div>
+      <pre>
+        <code>
+          {JSON.stringify({ data, isFetching, error, isLoading }, null, 2)}
+        </code>
+      </pre>
+    </div>
+  );
+};
