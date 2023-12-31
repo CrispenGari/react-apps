@@ -1,0 +1,11 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+.app__todos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 5px auto;
+}

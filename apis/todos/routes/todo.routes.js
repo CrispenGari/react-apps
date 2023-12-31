@@ -48,7 +48,7 @@ todoRouter.delete("/delete/:id", async (req, res) => {
       });
     }
     await todo.destroy();
-    return res.status(204).json({ message: "Deleted" });
+    return res.status(201).json({ message: "Deleted" });
   } catch (error) {
     return res.status(500).json({
       error: error.message,
