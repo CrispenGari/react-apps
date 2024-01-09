@@ -1,8 +1,8 @@
 import React from "react";
-import { useQuery } from "react-query";
-import { useDispatch, useSelector } from "react-redux";
-import { add, remove } from "./actions";
 
+import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "react-query";
+import { add, remove } from "./actions";
 const App = () => {
   const { data, isFetching } = useQuery({
     queryKey: ["recipes"],
@@ -12,13 +12,19 @@ const App = () => {
       return data;
     },
   });
-
+  const bookmarks = useSelector((state) => state.bookmarks);
   if (isFetching) return <p>Fetching recipes</p>;
   return (
-    <div className="app" style={{ display: "flex", flexWrap: "wrap" }}>
-      {data.map((recipe) => (
-        <Recipe recipe={recipe} key={recipe.id} />
-      ))}
+    <div className="app">
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <h1>Logo</h1>
+        <h2>{bookmarks.length} bookmarks</h2>
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {data.map((recipe) => (
+          <Recipe recipe={recipe} key={recipe.id} />
+        ))}
+      </div>
     </div>
   );
 };
