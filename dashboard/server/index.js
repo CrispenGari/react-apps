@@ -16,7 +16,6 @@ const __url__ = `mongodb+srv://${process.env.MONGODB_NAME}:${process.env.MONGODB
       console.log("Connected to cloud mongodb.");
     })
     .catch((error) => console.error(error));
-
   app.post("/add", async (req, res) => {
     try {
       const data = req.body;
@@ -26,7 +25,6 @@ const __url__ = `mongodb+srv://${process.env.MONGODB_NAME}:${process.env.MONGODB
       return res.status(500).json({ error: "Internal Server Error" });
     }
   });
-
   app.get("/all", async (req, res) => {
     try {
       const people = await Person.find({});

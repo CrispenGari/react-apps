@@ -10,9 +10,12 @@ import {
   CModalFooter,
   CModalHeader,
   CModalTitle,
+  CSpinner,
 } from "@coreui/react";
+import { useMutation, useQueryClient } from "react-query";
 
 const Create = ({ visible, setVisible }) => {
+  const client = useQueryClient();
   const [state, setState] = React.useState({
     name: "",
     surname: "",
@@ -20,11 +23,37 @@ const Create = ({ visible, setVisible }) => {
     email: "",
     gender: "female",
   });
+  const { isLoading, mutateAsync } = useMutation({
+    mutationKey: ["add"],
+    mutationFn: async (variables) => {
+      const res = await fetch("http://localhost:3001/add", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(variables),
+        method: "POST",
+      });
+      const data = await res.json();
+      return data;
+    },
+  });
 
   const addPerson = (e) => {
     e.preventDefault();
-
-    console.log({ state });
+    if (isLoading) return;
+    mutateAsync({ ...state }).then(async (res) => {
+      await client.invalidateQueries(["people"]);
+      setState((state) => ({
+        ...state,
+        name: "",
+        surname: "",
+        dob: new Date().toISOString().substring(0, 10),
+        email: "",
+        gender: "female",
+      }));
+      setVisible(false);
+    });
   };
   return (
     <CModal
@@ -86,6 +115,14 @@ const Create = ({ visible, setVisible }) => {
           Close
         </CButton>
         <CButton color="primary" onClick={addPerson}>
+          {isLoading && (
+            <CSpinner
+              style={{ marginRight: 5 }}
+              component="span"
+              size="sm"
+              aria-hidden="true"
+            />
+          )}
           Save changes
         </CButton>
       </CModalFooter>
