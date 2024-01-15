@@ -3,9 +3,14 @@
   width: 100vw;
   height: 100vh;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
-
 .app__main {
   display: flex;
   flex: 1;
+  padding: 20px;
+}
+.app::-webkit-scrollbar {
+  display: none;
 }

@@ -1,21 +1,11 @@
 import React from "react";
 import "./Main.css";
-import { useQuery } from "react-query";
+
 import { CSpinner } from "@coreui/react";
 
 import Gender from "../Gender/Gender";
 import Month from "../Month/Month";
-const Main = () => {
-  const { data, isFetching } = useQuery({
-    queryKey: ["people"],
-    queryFn: async (params) => {
-      const res = await fetch("http://localhost:3001/all");
-      const people = await res.json();
-      return {
-        people,
-      };
-    },
-  });
+const Main = ({ isFetching, data }) => {
   if (isFetching)
     return (
       <div

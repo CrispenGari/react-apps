@@ -1,33 +1,19 @@
 import React from "react";
 import "./SideBar.css";
-import { CButton } from "@coreui/react";
-import Create from "../Forms/Create/Create";
-import Delete from "../Forms/Delete/Delete";
-import Edit from "../Forms/Edit/Edit";
+import Person from "../Person/Person";
 
-const SideBar = () => {
-  const [openAdd, setOpenAdd] = React.useState(false);
-  const [openEdit, setOpenEdit] = React.useState(false);
-  const [openDelete, setOpenDelete] = React.useState(false);
+const SideBar = ({ data, isFetching }) => {
+  if (isFetching)
+    return (
+      <div className="sidebar">
+        <p>Loading people</p>
+      </div>
+    );
   return (
     <div className="sidebar">
-      <h1>
-        Controls <span />
-      </h1>
-      <Create setVisible={setOpenAdd} visible={openAdd} />
-      <Edit setVisible={setOpenEdit} visible={openEdit} />
-      <Delete setVisible={setOpenDelete} visible={openDelete} />
-      <div className="d-grid gap-2">
-        <CButton color="success" onClick={() => setOpenAdd(true)}>
-          ADD NEW
-        </CButton>
-        <CButton color="warning" onClick={() => setOpenEdit(true)}>
-          EDIT
-        </CButton>
-        <CButton color="danger" onClick={() => setOpenDelete(true)}>
-          REMOVE
-        </CButton>
-      </div>
+      {data?.people?.map((person) => (
+        <Person key={person._id} person={person} />
+      ))}
     </div>
   );
 };

@@ -33,6 +33,37 @@ const __url__ = `mongodb+srv://${process.env.MONGODB_NAME}:${process.env.MONGODB
       return res.status(500).json({ error: "Internal Server Error" });
     }
   });
+  app.patch("/update/:id", async (req, res) => {
+    try {
+      const _id = req.params.id;
+      const data = req.body;
+      const person = await Person.updateOne(
+        {
+          _id,
+        },
+        { ...data }
+      );
+      return res.status(201).json(person);
+    } catch (error) {
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+  app.delete("/delete/:id", async (req, res) => {
+    try {
+      const _id = req.params.id;
+      await Person.deleteOne({
+        _id,
+      });
+      return res.status(201).json({
+        message: "Deleted",
+        success: true,
+      });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ error: "Internal Server Error", success: false });
+    }
+  });
   app.listen(PORT);
 })().then(() => {
   console.log("The server is listening on port: %s", PORT);
