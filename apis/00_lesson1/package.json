@@ -2,10 +2,10 @@
   "name": "api",
   "version": "0.0.1",
   "description": "hello api",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon index.js -q"
+    "start": "nodemon src/index.js -q"
   },
   "keywords": [],
   "author": "Name here",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "argon2": "^0.31.2",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^8.1.0"
   }
 }
