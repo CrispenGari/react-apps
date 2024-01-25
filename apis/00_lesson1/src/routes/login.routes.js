@@ -1,7 +1,6 @@
 const express = require("express");
 const { UserModel } = require("../models/user.model");
 const argorn2 = require("argon2");
-
 const loginRoutes = express.Router();
 loginRoutes.post("/login", async (req, res) => {
   try {
@@ -14,6 +13,13 @@ loginRoutes.post("/login", async (req, res) => {
         user: null,
         code: 200,
         error: "The user with that email does not have an account.",
+      });
+    }
+    if (!me.verified) {
+      return res.status(200).json({
+        user: null,
+        code: 200,
+        error: "The email of this account is not verified.",
       });
     }
     const correct = await argorn2.verify(

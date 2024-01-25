@@ -1,4 +1,4 @@
-//  1. send emails and verifying accounts
+require("dotenv/config");
 const mongoose = require("mongoose");
 const express = require("express");
 const { userRoute } = require("./routes");

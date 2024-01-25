@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const UserSchema = new mongoose.Schema(
   {
     email: {
@@ -18,6 +19,10 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+    },
+    verified: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true } // createAt and updatedAt

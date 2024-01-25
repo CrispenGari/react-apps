@@ -15,7 +15,6 @@ PUT: /update-password
 PUT: /update-profile
 
 DELETE: /delete-account
-
 */
 
 const userRoute = express.Router({
