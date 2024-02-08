@@ -1,0 +1,2 @@
+1. keep in track of the payments
+2. make payments based on the amount coming from the client
