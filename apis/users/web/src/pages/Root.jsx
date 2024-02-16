@@ -9,9 +9,9 @@ import axios from "axios";
 import Verify from "./Verify/Verify";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import NewPassword from "./NewPassword/NewPassword";
+import Success from "./Success/Success";
 
 const Root = () => {
-  const navigate = useNavigate();
   const { isLoading, data: user } = useQuery({
     queryKey: ["me"],
     queryFn: async (params) => {
@@ -21,12 +21,6 @@ const Root = () => {
       return res.data;
     },
   });
-
-  React.useEffect(() => {
-    if (!!user) {
-      navigate("/", { replace: true });
-    }
-  }, [user, navigate]);
 
   if (isLoading) {
     return (
@@ -65,6 +59,11 @@ const Root = () => {
   return (
     <Routes>
       <Route path="/" caseSensitive element={<Home me={user} />} />
+      <Route
+        path="/payment-success"
+        caseSensitive
+        element={<Success me={user} />}
+      />
       <Route path="*" element={<NotFound />} caseSensitive />
     </Routes>
   );

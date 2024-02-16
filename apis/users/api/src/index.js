@@ -2,7 +2,7 @@ require("dotenv/config");
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
-const { userRoute } = require("./routes");
+const { userRoute, paymentRoute } = require("./routes");
 const session = require("express-session");
 
 // constants
@@ -41,6 +41,7 @@ const server = express();
   server.use(express.json());
 
   server.use("/api/user", userRoute);
+  server.use("/api/payments", paymentRoute);
 
   server.listen(PORT);
 })().then(() => console.log("The server has started at port: 4000"));

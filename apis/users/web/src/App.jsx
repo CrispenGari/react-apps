@@ -3,6 +3,9 @@ import Root from "./pages/Root";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { Elements } from "@stripe/react-stripe-js";
+
+import { stripe } from "./constants";
 const client = new QueryClient({
   defaultOptions: {
     queries: {
@@ -11,15 +14,28 @@ const client = new QueryClient({
       refetchOnMount: true,
     },
   },
-});
+}); //
+
 const App = () => {
   return (
-    <QueryClientProvider client={client}>
-      <BrowserRouter>
-        <Root />
-      </BrowserRouter>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <Elements
+      stripe={stripe}
+      options={{
+        mode: "payment",
+        currency: "zar",
+        amount: 5000,
+        appearance: {
+          theme: "night",
+        },
+      }}
+    >
+      <QueryClientProvider client={client}>
+        <BrowserRouter>
+          <Root />
+        </BrowserRouter>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </Elements>
   );
 };
 

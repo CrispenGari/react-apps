@@ -4,6 +4,7 @@ const { registerRoutes } = require("./register.routes.js");
 const { userRoutes } = require("./user.routes.js");
 const { logoutRoutes } = require("./logout.routes.js");
 const { resetPasswordRoutes } = require("./reset_password.routes.js");
+const { paymentsRoutes } = require("./payments.routes.js");
 
 /*
 GET: /all
@@ -22,12 +23,17 @@ DELETE: /delete-account
 const userRoute = express.Router({
   caseSensitive: true,
 });
+const paymentRoute = express.Router({
+  caseSensitive: true,
+});
 userRoute.use("/", loginRoutes);
 userRoute.use("/", registerRoutes);
 userRoute.use("/", userRoutes);
 userRoute.use("/", logoutRoutes);
 userRoute.use("/", resetPasswordRoutes);
+paymentRoute.use("/", paymentsRoutes);
 
 module.exports = {
   userRoute,
+  paymentRoute,
 };
