@@ -4,7 +4,7 @@ const Copy = ({ value }) => {
   const [s, setS] = React.useState("");
   return (
     <div className="Copy">
-      <input type="text" value={value} data-testid="copy" />
+      <input type="text" value={value} data-testid="copy" onChange={() => {}} />
       <input
         type="text"
         value={s}
