@@ -63,7 +63,7 @@
 - DocumentPicker ✅
 - Network ✅
 - NetInfo ✅
-- Notifications
+- Notifications ✅
 - Sharing ✅
 - LinearGradient ✅
 - SQLite3
