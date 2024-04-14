@@ -4,6 +4,8 @@
 2. https://docs.expo.dev/tutorial/create-your-first-app/
 3. https://vuejs.org/guide/introduction.html
 4. https://reactnative.dev/docs/accessibilityinfo
+5. https://docs.expo.dev/versions/latest/
+6. https://fonts.google.com/
 
 #### Native Components
 
@@ -52,3 +54,23 @@
 19. Vibration ✅
 20. Transform ❌
 21. SystemTrace ❌
+22. ToastAndroid ✅
+
+### Expo APIs and Components
+
+- Clipboard ✅
+- Contacts ✅
+- DocumentPicker ✅
+- Network ✅
+- NetInfo ✅
+- Notifications
+- Sharing ✅
+- LinearGradient ✅
+- SQLite3
+
+### Others
+
+- React Native Navigation
+  - Stack Navigation
+  - Bottom Sheet Navigation
+  - Drawer Navigation
