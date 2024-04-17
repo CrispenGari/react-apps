@@ -66,7 +66,7 @@
 - Notifications ✅
 - Sharing ✅
 - LinearGradient ✅
-- SQLite3
+- SQLite3 ✅
 
 ### Others
 

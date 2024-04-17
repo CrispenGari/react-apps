@@ -1,29 +1,74 @@
-import { View, Text, Image, Pressable, TextInput, Button } from "react-native";
+import { View, Text, Button, FlatList } from "react-native";
 import React from "react";
-import { FontAwesome5, AntDesign } from "@expo/vector-icons";
+
 import Typography from "./components/Typography/Typography";
 import { useFonts } from "expo-font";
 import { Fonts } from "./constants";
-import * as ImagePicker from "expo-image-picker";
+import { Statements, db, run } from "./db";
+import Form from "./components/Form/Form";
 import IconButton from "./components/IconButton/IconButrton";
-import { useImagePermisions } from "./hooks/imagePermisions";
-import * as Sharing from "expo-sharing";
-import * as Network from "expo-network";
-import NetInfo from "@react-native-community/netinfo";
-import { LinearGradient } from "expo-linear-gradient";
-import * as DC from "expo-document-picker";
+import Student from "./components/Student/Student";
+import { FontAwesome } from "@expo/vector-icons";
 
 const App = () => {
   const [loaded] = useFonts(Fonts);
+  const [students, setStudents] = React.useState([]);
+  const [student, setStudent] = React.useState(null);
+  const [order, setOrder] = React.useState("ASC");
 
-  const select = async () => {
-    const { assets } = await DC.getDocumentAsync({
-      multiple: false,
-      copyToCacheDirectory: true,
-    });
+  React.useEffect(() => {
+    (async () => {
+      const { result } = await run({
+        sql: Statements.CREATE_TABLE_STATEMENT,
+        args: [],
+      });
+    })();
 
-    console.log({ assets });
-  };
+    // (async () => {
+    //   await db.transaction(
+    //     (txt) => {
+    //       txt.executeSql(Statements.CREATE_TABLE_STATEMENT);
+    //     },
+    //     (error) => {
+    //       console.log(error);
+    //     },
+    //     async () => {
+    //       console.log("The table student has been synced");
+    //       await db.transaction(
+    //         (txt) => {
+    //           txt.executeSql(
+    //             Statements.ALL_STUDENTS,
+    //             undefined,
+    //             (_, { rows }) => {
+    //               if (rows._array.length !== 0) {
+    //                 setStudents(rows._array);
+    //               }
+    //             },
+    //             (error) => console.error(error)
+    //           );
+    //         },
+    //         (error) => {
+    //           console.log(error);
+    //         },
+    //         () => {
+    //           console.log("The table student has been synced");
+    //         }
+    //       );
+    //     }
+    //   );
+    // })();
+  }, []);
+
+  React.useEffect(() => {
+    (async () => {
+      const { result } = await run({
+        sql: Statements.ALL_STUDENTS.concat(order).concat(";"),
+        args: [],
+      });
+      const stds = result[0].rows;
+      setStudents(stds);
+    })();
+  }, [order]);
 
   if (!loaded)
     return (
@@ -35,14 +80,51 @@ const App = () => {
   return (
     <View
       style={{
-        justifyContent: "center",
-        alignItems: "center",
         flex: 1,
         padding: 10,
+        marginTop: 20,
       }}
     >
-      <Button title="Select documnet" onPress={select} />
-      <Typography variant={"h1"}>Set Profile</Typography>
+      <Form
+        setStudents={setStudents}
+        student={student}
+        setStudent={setStudent}
+        order={order}
+      />
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+          marginVertical: 10,
+        }}
+      >
+        <Typography variant={"h1"}>All Students</Typography>
+
+        <IconButton
+          Icon={<FontAwesome name="unsorted" size={24} color="black" />}
+          bg={"#f5f5f5"}
+          onPress={() => setOrder((oder) => (order === "ASC" ? "DESC" : "ASC"))}
+        />
+      </View>
+      <View>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={students}
+          keyExtractor={({ id }, index) => id.toString()}
+          renderItem={({ item }) => (
+            <Student
+              setStudents={setStudents}
+              setStudent={setStudent}
+              student={item}
+              order={order}
+            />
+          )}
+          style={{ flex: 0 }}
+        />
+      </View>
     </View>
   );
 };
