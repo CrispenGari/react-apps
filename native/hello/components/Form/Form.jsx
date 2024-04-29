@@ -36,7 +36,6 @@ const Form = ({ setStudents, setStudent, student, order }) => {
       args: state.bio
         ? [state.firstName, state.lastName, state.avatar, state.bio, student.id]
         : [state.firstName, state.lastName, state.avatar, student.id],
-
       sql: Statements.UPDATE_STUDENT(state.bio),
     });
     if (result[0].rowsAffected) {

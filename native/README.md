@@ -6,6 +6,7 @@
 4. https://reactnative.dev/docs/accessibilityinfo
 5. https://docs.expo.dev/versions/latest/
 6. https://fonts.google.com/
+7. https://reactnavigation.org/docs/getting-started/
 
 #### Native Components
 
@@ -67,10 +68,11 @@
 - Sharing ✅
 - LinearGradient ✅
 - SQLite3 ✅
+- ExpoBlurView
 
 ### Others
 
 - React Native Navigation
-  - Stack Navigation
+  - Stack Navigation ✅
   - Bottom Sheet Navigation
   - Drawer Navigation
