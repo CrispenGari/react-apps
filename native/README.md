@@ -68,11 +68,13 @@
 - Sharing ✅
 - LinearGradient ✅
 - SQLite3 ✅
-- ExpoBlurView
+- ExpoBlurView ✅
+- MapView ✅
+- Location ✅
 
 ### Others
 
 - React Native Navigation
   - Stack Navigation ✅
-  - Bottom Sheet Navigation
+  - Bottom Sheet Navigation ✅
   - Drawer Navigation
