@@ -77,4 +77,16 @@
 - React Native Navigation
   - Stack Navigation ✅
   - Bottom Sheet Navigation ✅
-  - Drawer Navigation
+  - Drawer Navigation ✅
+  - Nested Navigation
+    - tabs and stacks ✅
+    - tabs and drawer ✅
+
+### Comunity UI Component
+
+1. Botttom Sheet
+2. Select
+
+### State Management
+
+### Data Fetching
