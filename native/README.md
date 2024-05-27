@@ -7,6 +7,7 @@
 5. https://docs.expo.dev/versions/latest/
 6. https://fonts.google.com/
 7. https://reactnavigation.org/docs/getting-started/
+8. https://ui.gorhom.dev/components/bottom-sheet/
 
 #### Native Components
 
