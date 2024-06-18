@@ -1,0 +1,49 @@
+{
+  "cli": {
+    "version": ">= 7.8.2"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_API_KEY": "AIzaSyD0zn6CF127hx43EyehG8JGVCB_ftCusGo",
+        "EXPO_PUBLIC_API_AUTH_DOMAIN": "yap-backend.firebaseapp.com",
+        "EXPO_PUBLIC_API_PROJECT_ID": "yap-backend",
+        "EXPO_PUBLIC_API_STORAGE_BUCKET": "yap-backend.appspot.com",
+        "EXPO_PUBLIC_API_MESSAGING_SENDER_ID": "748681562074",
+        "EXPO_PUBLIC_API_APP_ID": "1:748681562074:web:cb51536d68910bdcdd62e3",
+        "EXPO_PUBLIC_API_MEASUREMENT_ID": "G-0TBX199SPN"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_API_KEY": "AIzaSyD0zn6CF127hx43EyehG8JGVCB_ftCusGo",
+        "EXPO_PUBLIC_API_AUTH_DOMAIN": "yap-backend.firebaseapp.com",
+        "EXPO_PUBLIC_API_PROJECT_ID": "yap-backend",
+        "EXPO_PUBLIC_API_STORAGE_BUCKET": "yap-backend.appspot.com",
+        "EXPO_PUBLIC_API_MESSAGING_SENDER_ID": "748681562074",
+        "EXPO_PUBLIC_API_APP_ID": "1:748681562074:web:cb51536d68910bdcdd62e3",
+        "EXPO_PUBLIC_API_MEASUREMENT_ID": "G-0TBX199SPN"
+      }
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_API_API_KEY": "AIzaSyD0zn6CF127hx43EyehG8JGVCB_ftCusGo",
+        "EXPO_PUBLIC_API_AUTH_DOMAIN": "yap-backend.firebaseapp.com",
+        "EXPO_PUBLIC_API_PROJECT_ID": "yap-backend",
+        "EXPO_PUBLIC_API_STORAGE_BUCKET": "yap-backend.appspot.com",
+        "EXPO_PUBLIC_API_MESSAGING_SENDER_ID": "748681562074",
+        "EXPO_PUBLIC_API_APP_ID": "1:748681562074:web:cb51536d68910bdcdd62e3",
+        "EXPO_PUBLIC_API_MEASUREMENT_ID": "G-0TBX199SPN"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
