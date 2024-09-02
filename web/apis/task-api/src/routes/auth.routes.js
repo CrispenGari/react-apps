@@ -114,7 +114,7 @@ authRoute.put("/change-password", async (req, res) => {
     const payload = await verifyJwt(jwt);
     const _id = new ObjectId(payload._id);
     const me = await User.findById(_id);
-    if (!!me) return res.status(200).json({ error: "Something went wrong." });
+    if (!!!me) return res.status(200).json({ error: "Something went wrong." });
     const hashedPassword = await bcryptjs.hash(password.trim(), 12);
     await User.findByIdAndUpdate(_id, {
       password: hashedPassword,
