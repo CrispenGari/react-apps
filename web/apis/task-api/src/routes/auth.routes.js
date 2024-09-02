@@ -100,7 +100,7 @@ authRoute.post("/reset-password", async (req, res) => {
     return handleError(error, res);
   }
 });
-authRoute.put("/change-password", async () => {
+authRoute.put("/change-password", async (req, res) => {
   try {
     const { confirm, password } = req.body;
     if (password.trim().length < 3)
