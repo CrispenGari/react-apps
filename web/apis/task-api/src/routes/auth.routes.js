@@ -16,6 +16,7 @@ const handleError = (error, res) => {
 
 authRoute.get("/me", async (req, res) => {
   try {
+    //  Bearer jakkal;;akuajjhja
     const [_, jwt] = req.headers.authorization.split(/\s/);
     const payload = await verifyJwt(jwt);
     if (!!!payload)
@@ -32,10 +33,6 @@ authRoute.get("/me", async (req, res) => {
 authRoute.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (password.trim().length < 3)
-      return res
-        .status(200)
-        .json({ error: "The password must be at least 3 characters." });
     const me = await User.findOne({ email: email.trim().toLowerCase() });
     if (!!!me)
       return res
@@ -103,7 +100,7 @@ authRoute.post("/reset-password", async (req, res) => {
     return handleError(error, res);
   }
 });
-authRoute.post("/change-password", async () => {
+authRoute.put("/change-password", async () => {
   try {
     const { confirm, password } = req.body;
     if (password.trim().length < 3)

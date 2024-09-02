@@ -1,6 +1,6 @@
 import jsonwebtoken from "jsonwebtoken";
-
 const { JWT_SECRETE } = process.env;
+
 export const signJwt = async (user) => {
   const jwt = await jsonwebtoken.sign(
     { email: user.email, _id: user._id },
