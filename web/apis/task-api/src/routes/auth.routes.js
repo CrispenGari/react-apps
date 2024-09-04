@@ -88,6 +88,24 @@ authRoute.post("/logout", async (req, res) => {
   }
 });
 
+authRoute.delete("/delete", async (req, res) => {
+  try {
+    const [_, jwt] = req.headers.authorization.split(/\s/);
+    const payload = await verifyJwt(jwt);
+    if (!!!payload)
+      return res.status(200).json({
+        error: "The session has expired login again!",
+      });
+    const _id = new ObjectId(payload._id);
+    await User.deleteOne(_id);
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (error) {
+    return handleError(error, res);
+  }
+});
+
 //
 authRoute.post("/reset-password", async (req, res) => {
   try {
